@@ -20,7 +20,7 @@ namespace ShoppingAPI_Jueves_2024II.DAL
 
         #region DbSets
 
-        public DbSet<Country> countries { get; set; }
+        public DbSet<Country> Countries { get; set; }
         
 
         #endregion
