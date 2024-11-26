@@ -15,12 +15,14 @@ namespace ShoppingAPI_Jueves_2024II.DAL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Country>().HasIndex(c => c.Name).IsUnique(); //Aquí creo in indice del campo Name para la tabla countries
+            modelBuilder.Entity<Country>().HasIndex(c => c.Name).IsUnique(); //Aquí creo un indice del campo Name para la tabla countries
+            modelBuilder.Entity<State>().HasIndex("Name","CountryId").IsUnique();//Haciendo un índice compuesto
         }
 
         #region DbSets
 
         public DbSet<Country> Countries { get; set; }
+        public DbSet<State> States { get; set; }
         
 
         #endregion
