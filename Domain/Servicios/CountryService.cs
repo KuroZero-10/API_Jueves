@@ -78,7 +78,7 @@ namespace ShoppingAPI_Jueves_2024II.Domain.Servicios
             try
             {
                 var country = await GetCountryByIdAsync(id);
-                if (country != null)
+                if (country == null)
                 {
                     return null;
                 }
