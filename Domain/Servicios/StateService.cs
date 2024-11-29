@@ -41,6 +41,19 @@ namespace ShoppingAPI_Jueves_2024II.Domain.Servicios
                 throw new Exception(dbUpdateException.InnerException?.Message ?? dbUpdateException.Message);
             }
         }
+        public async Task<State> GetStateByNameAsync(string name)
+        {
+            try
+            {
+                var state= await _context.States.FirstOrDefaultAsync(s=> s.Name == name);
+                return state;
+            }
+            catch (DbUpdateException dbUpdateException)
+            {
+
+                throw new Exception(dbUpdateException.InnerException?.Message ?? dbUpdateException.Message);
+            }
+        }
 
         public async Task<State> CreateStateAsync(State state)
         {

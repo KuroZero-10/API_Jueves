@@ -6,7 +6,6 @@ namespace ShoppingAPI_Jueves_2024II.DAL.Entities
     {
         [Display(Name="Estado/Departamento")]
         [MaxLength(50,ErrorMessage ="El campo {0} debe tener máximo {1} caracteres")]
-        [Required(ErrorMessage ="El Campo {0} es obligatorio")]
         public string Name { get; set; }
 
         //Así se relaciona dos tablas con EF Core

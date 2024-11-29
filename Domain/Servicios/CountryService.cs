@@ -13,12 +13,12 @@ namespace ShoppingAPI_Jueves_2024II.Domain.Servicios
         {
             _context = context;
         }
-
+        
         public async Task<IEnumerable<Country>> GetCountriesAsync()
         {
             try
             {
-                return await _context.Countries.ToListAsync();
+                return await _context.Countries.Include(s=>s.States).ToListAsync();
             }
             catch (DbUpdateException dbUpdateException)
             {

@@ -17,7 +17,7 @@ namespace ShoppingAPI_Jueves_2024II.Controllers
 
         [HttpGet, ActionName("Get")]
         [Route("GetAll")]
-        public async Task<ActionResult<IEnumerable<Country>>> GetCountriesAsync()
+        public async Task<ActionResult<IEnumerable<State>>> GetCountriesAsync()
         {
             var states = await _stateService.GetStatesAsync();
             if (states == null || !states.Any()) return NotFound();
@@ -27,9 +27,18 @@ namespace ShoppingAPI_Jueves_2024II.Controllers
 
         [HttpGet, ActionName("Get")]
         [Route("GetByID/{id}")]// api/countries/get
-        public async Task<ActionResult<Country>> GetCountryByIdAsync(Guid id)
+        public async Task<ActionResult<State>> GetCountryByIdAsync(Guid id)
         {
             var states = await _stateService.GetStateByIdAsync(id);
+            if (states == null) return NotFound();//404
+
+            return Ok(states);//200
+        }
+        [HttpGet, ActionName("Get")]
+        [Route("GetByName/{name}")]// api/countries/get
+        public async Task<ActionResult<State>> GetStateByNameAsync(string name)
+        {
+            var states = await _stateService.GetStateByNameAsync(name);
             if (states == null) return NotFound();//404
 
             return Ok(states);//200
